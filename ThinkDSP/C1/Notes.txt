@@ -1,0 +1,7 @@
+The lowest frequency component of as signal is called the fundamental frequency.
+
+The largest amplitude frequency is called the dominant frequency.
+
+The perceived pitch of a sound is determined by the fundamental even if its not the dominant.
+
+Other spikes in the spectrum that are integer multiples of the fundamental are called harmonics as they harmonious with the fundamental.

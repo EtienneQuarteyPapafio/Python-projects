@@ -1,19 +1,28 @@
-﻿import numpy as np #imports the numpy library and gives it a custom function name
-import matplotlib.pyplot as plt #imports the matplot library and gives it a custom function name
+﻿import numpy as np #imports the numpy library
+import matplotlib.pyplot as plt #imports the matplot library
 
-# Generate x values from 0 to 2π (one full cycle)
-x = np.linspace(0, 2 * np.pi, 1000)
+#Define signal parameters
 
-# Calculate y values (sine of x)
-y = np.sin(x)
+T=1 #period in seconds
+fs=44100 #sampling frequency (Hz)
+ts=1/fs
+time=np.arange(0,T,ts) #creates an array of time in steps of ts
+
+#sinewave = A*cos*((2*pi*freq)*time+phase)
+
+amp=1; #0-1
+freq=20; #in hz
+phase=0; #initial phase
+
+y=amp*np.cos(2*np.pi*freq*time+phase)
 
 # Plot the sine wave
-plt.plot(x, y)
+plt.plot(time, y)
 
 # Add title and labels
 plt.title("Sine Wave")
-plt.xlabel("x (radians)")
-plt.ylabel("sin(x)")
+plt.xlabel("Time(sec)")
+plt.ylabel("Amplitude")
 
 # Show grid and the plot
 plt.grid(True)
