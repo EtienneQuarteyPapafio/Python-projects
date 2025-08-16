@@ -1,13 +1,17 @@
-from matplotlib import pyplot as plt #for plotting results
-import numpy as np #for numerical computation
-import scipy as sp #for scientific computation  
+import numpy as np  #imports the numpy library
+import matplotlib.pyplot as plt #imports the matplot library
+import librosa as lr #imports the Librosa library
+
+y, fs = lr.load('AcGtr.wav',sr=None) #put sr as none to use native sample of file
 
 
-# Generate 100 random data points along 3 dimensions
-x, y, scale = np.random.randn(3, 100)
-fig, ax = plt.subplots()
 
-# Map each onto a scatterplot we'll create with Matplotlib
-ax.scatter(x=x, y=y, c=scale, s=np.abs(scale)*500)
-ax.set(title="Some random data, created with JupyterLab!")
+maxDelay=800 #max delay in ms
+
+maxSamples=maxDelay*fs/1000 #converts to samples
+
+buffer=fs+maxSamples
+
+plt.figure(figsize=(12, 4))
+lr.display.waveshow(y, sr=fs) #This functions will dipslay audio file's waveform.
 plt.show()
