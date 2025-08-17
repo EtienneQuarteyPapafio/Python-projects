@@ -18,11 +18,13 @@ msSample=round(delayTime*fs/1000)
 
 #Buffers
 
-delay1=np.zeros(N+maxSamples) #empty array buffer to hold delayed signal
+delay1=np.zeros(N+maxSamples) #empty array buffer to hold delayed signal (if the output and the delay buffer differ in size it makes things difficult, arrays cant align)
 
 output=np.zeros(N+maxSamples) #empty array buffer to hold original and delayed signal
 
-delay1[msSample:msSample+N]=y
+delay1[msSample:msSample+N]=y #from the delay to the length of the signal
+
+#Output
 
 output[:N]+=y
 
