@@ -10,7 +10,7 @@ N=int(len(y)) #length of signal
 
 maxDelay=800 #max delay in ms
 
-delayTime=400 #chosen delay time <--- Change
+delayTime=600 #chosen delay time <--- Change
 
 maxSamples=round(maxDelay*fs/1000) #converts ms to samples
 
@@ -18,17 +18,15 @@ msSample=round(delayTime*fs/1000)
 
 #Buffers
 
-delay1=np.zeros(N+msSample) #empty array buffer to hold delayed signal
+delay1=np.zeros(N+maxSamples) #empty array buffer to hold delayed signal
 
 output=np.zeros(N+maxSamples) #empty array buffer to hold original and delayed signal
 
-for i in range(N):
+delay1[msSample:msSample+N]=y
 
-        delay1[i+msSample]=y[i]
+output[:N]+=y
 
-
-for i in range(N): 
-    output[i]=y[i]*0.5+delay1[i]*0.5
+output += delay1
 
 
 sf.write('AcGtr_with_delay.wav', output, fs) #writes audio
